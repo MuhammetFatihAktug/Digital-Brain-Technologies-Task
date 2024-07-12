@@ -29,13 +29,13 @@ def get_page_soup(url):
     return BeautifulSoup(response.text, 'html.parser')
 
 def get_product_data(product):
-    title = product.find('h2', class_='woocommerce-loop-product__title').text
+    name = product.find('h2', class_='woocommerce-loop-product__title').text
     price = product.find('span', class_='woocommerce-Price-amount').text
     description_url = product.find('a', class_='woocommerce-LoopProduct-link')['href']
     description, stock = get_product_details(description_url)
     
     return {
-        'title': title,
+        'name': name,
         'price': price,
         'description': description,
         'stock': stock
